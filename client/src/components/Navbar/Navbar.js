@@ -1,8 +1,14 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Link from '@material-ui/core/Box'
+import { Link } from '@material-ui/core'
+import { purple } from '@material-ui/core/colors'
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -12,8 +18,8 @@ function TabPanel(props) {
       component="div"
       role="tabpanel"
       hidden={value !== index}
-      id={`nav-tabpanel-${index}`}
-      aria-labelledby={`nav-tab-${index}`}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
       {value === index && <Box p={3}>{children}</Box>}
@@ -27,16 +33,11 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-function LinkTab(props) {
-  return (
-    <Tab
-      component="a"
-      onClick={(event) => {
-        event.preventDefault();
-      }}
-      {...props}
-    />
-  );
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -44,9 +45,12 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
   },
+  link: {
+    color: 'black'
+  },
 }));
 
-export default function NavTabs() {
+export default function SimpleTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -56,17 +60,13 @@ export default function NavTabs() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        <Tabs
-          variant="fullWidth"
-          value={value}
-          onChange={handleChange}
-          aria-label="nav tabs example"
-        >
-          <Link to='/'><Tab label="Saved" /></Link>
-          <Link to='/saved'><Tab label="Portfolio" /></Link>
+      <AppBar position="static" color="purple[50]">
+        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+          <Link href="/"><Tab label="Home" /></Link>
+          <Link href="/saved" ><Tab label="Saved" /></Link>
         </Tabs>
       </AppBar>
+  
     </div>
   );
 }
