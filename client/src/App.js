@@ -54,10 +54,12 @@ function App() {
   }
 
   return (
+  <BookContext.Provider value={bookState}>
     <Router>
       <Route exact path="/" component={Search} />
       <Route exact path="/saved" component={Saved} />
     </ Router>
+  </BookContext.Provider >
   );
 }
 
