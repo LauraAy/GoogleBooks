@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 export default function SimpleCard() {
   const classes = useStyles();
 
-  const { handleDeleteBook } = useContext(BookContext)
+  // const { handleDeleteBook } = useContext(BookContext)
 
   const [bookState, setBookState] = useState({
     books: []
@@ -60,7 +60,7 @@ export default function SimpleCard() {
               {savedBooks.authors}
             </Typography>
           </CardContent>
-          <CardActions>
+          {/* <CardActions>
             <Button
               type="submit"
               fullWidth
@@ -72,7 +72,7 @@ export default function SimpleCard() {
               Delete
   
             </Button>
-          </CardActions>
+          </CardActions> */}
         </Card>
       )}
     </>
