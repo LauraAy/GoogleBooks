@@ -33,7 +33,7 @@ export default function SimpleCard() {
   return (
   <>
     {searchedBooks.map((searchedBooks, i) =>
-    <Card className={classes.root}>
+    <Card key={i} className={classes.root}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
         </Typography>
@@ -51,7 +51,7 @@ export default function SimpleCard() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={handleSaveBook}
+            onClick={() => handleSaveBook(i)}
           >
            Save
                 </Button>

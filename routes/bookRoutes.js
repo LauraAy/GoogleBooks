@@ -8,6 +8,7 @@ router.get('/books', (req, res) => {
 })
 
 router.post('/books', (req, res) => {
+  console.log('ping')
   Books.create(req.body)
     .then(item => res.json(item))
     .catch(e => console.error(e))
@@ -19,4 +20,6 @@ router.put('/books/:id', (req, res) => {
     .catch(e => console.error(e))
 })
 
-router.delete('/books/:id', (req, res))
+// router.delete('/books/:id', (req, res))
+
+module.exports = router

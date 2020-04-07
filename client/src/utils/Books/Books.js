@@ -1,10 +1,10 @@
 
-// import axios from 'axios'
+import axios from 'axios'
 
-// const Book = {
-//   read: () => axios.get('/api/books'),
-//   create: books => axios.post('/api/books', books),
-//   delete: id => axios.delete(`/api/books/${id}`)
-// }
+const Book = {
+  read: () => axios.get('/api/books'),
+  create: books => axios.post('/api/books', books),
+  delete: id => axios.delete(`/api/books/${id}`)
+}
 
-// export default Book
+export default Book
